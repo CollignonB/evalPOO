@@ -22,9 +22,9 @@
                 <td><?php echo $value->getTittle()?></td>
                 <td><?php echo $value->getAuthor()?></td>
                 <td><?php echo $value->getPublication_date()?></td>
-                <td><?php echo $value->getStatus()?></td>
+                <td><?php echo $value->getStatus() === 0 ? "disponible" : "emprumté"?></td>
                 <td><?php echo $value->getCategory()?></td>
-                <td><a href="book.php?id=<?php echo $value->getId()?>">Editer</td>
+                <td><a href="book.php?id=<?php echo $value->getId()?>">Editer</a></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

@@ -31,8 +31,8 @@ class Book {
         return $this->category;
     }
     // return 'disponible' or 'emprumté' based on 0 or 1 in db 
-    public function getStatus():string{
-        return $this->status === 0 ? "disponible" : "emprumté" ;
+    public function getStatus():int{
+        return $this->status;
     }
     public function getUser():User{
         return $this->user;
@@ -73,6 +73,8 @@ class Book {
     }
 
     public function __construct(array $data = null){
-        $this->hydrate($data);
+        if($data){
+            $this->hydrate($data);
+        }
     }
 }

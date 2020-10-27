@@ -14,7 +14,15 @@ class bookManager extends Model {
   }
 
   // Récupère un livre
-  public function getBook() {
+  public function getBook(int $id) {
+    $querry = $this->db->prepare("
+    SELECT * FROM book WHERE id = :id
+    ");
+    $querry->execute([
+      "id" => $id
+    ]);
+    $querry->setFetchMode(PDO::FETCH_CLASS, 'Book');
+    return $querry->fetch();
 
   }
 
@@ -24,8 +32,18 @@ class bookManager extends Model {
   }
 
   // Met à jour le statut d'un livre emprunté
-  public function updateBookStatus() {
+  public function updateBookStatus(Book $book) {
+    $book->getStatus() === 0 ? $s = 1 : $s = 0;
 
+    $querry = $this->db->prepare("
+      UPDATE book 
+      SET status = :status
+      WHERE id = :id
+    ");
+    $querry->execute([
+      "status" => $s,
+      "id" => $book->getId()
+    ]);
   }
 
 }

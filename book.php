@@ -1,8 +1,12 @@
 <?php
+include "model/bookManager.php";
+include "model/entity/book.php";
 include "template/nav.php";
 include "template/header.php";
 
-var_dump($_GET["id"]);
+$bookManager = new bookManager();
 
+$book = $bookManager->getBook($_GET["id"]);
+echo "ajout un champ pour choisir le gars qui emprunt le livre";
 include "view/bookView.php";
 include "template/footer.php";
