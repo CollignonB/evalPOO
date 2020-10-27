@@ -8,5 +8,4 @@ $bookManager = new bookManager();
 $book = $bookManager->getBook($_GET["id"]);
 $bookManager->updateBookStatus($book);
 
-
-header("Location:book.php?id=1");
+header("Location:book.php?id=". $book->getId());

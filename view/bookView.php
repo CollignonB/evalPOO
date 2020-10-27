@@ -15,6 +15,11 @@
         <div><?php echo $book->getResume()?></div>
     </div>
     <div class="row">
-    <a href="changeStatus.php?id=<?php echo $book->getId()?>" type="button" class="btn btn-success">Emprumter/Rendre </a>
+    <a href="changeStatus.php?id=<?php echo $book->getId()?>" type="button" class="btn btn-success">Emprumter/Rendre</a>
+    <?php if($book->getStatus() === 0):?>
+        <select name = "users">
+             <!-- foreach qui affiche les utilisateurs de la BDD -->
+        </select>
+    <?php endif?>
     </div>
 </div>
