@@ -1,5 +1,6 @@
 <?php
-// Classe représetant les utilisateurs stockés en base de données
+
+
 class User {
 
     const SEX = ["male", "female"];
@@ -63,5 +64,17 @@ class User {
     }
     public function setCity(string $city){
         $this->city = $city;
+    }
+    private function hydrate(array $datas){
+        foreach($datas as $key => $value){
+            $method = "set" ; ucfirst($key);
+            if (method_exists($this, $method)){
+                $this->$method(htmlspecialchars($value));
+            }
+        }
+    }
+
+    public function __construct(array $data){
+        $this->hydrate($data);
     }
 }

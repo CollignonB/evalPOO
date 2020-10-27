@@ -1,10 +1,16 @@
 <?php
+include "model.php";
 
-class bookManager {
+class bookManager extends Model {
 
   // Récupère tous les livres
   public function getBooks() {
-
+    $querry = $this->db->prepare("
+      SELECT * FROM book
+    ");
+    $querry->execute();
+    $querry->setFetchMode(PDO::FETCH_CLASS, 'Book');
+    return $querry->fetchAll();
   }
 
   // Récupère un livre
