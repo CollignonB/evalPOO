@@ -1,2 +1,6 @@
 <?php
-// Controleur qui gère l'affichage de tous les utilisateurs
+include "template/nav.php";
+include "template/header.php";
+
+include "view/usersView.php";
+include "template/footer.php";

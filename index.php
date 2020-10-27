@@ -1,2 +1,7 @@
 <?php
-// Controlleur qui gérer l'affichage de tous les livres
+include "template/nav.php";
+include "template/header.php";
+
+
+include "view/indexView.php";
+include "template/footer.php";

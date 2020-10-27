@@ -1,2 +1,6 @@
 <?php
-// Controleur qui gère l'affichage du détail d'un livre
+include "template/nav.php";
+include "template/header.php";
+
+include "view/bookView.php";
+include "template/footer.php";
