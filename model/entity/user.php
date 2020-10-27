@@ -64,5 +64,4 @@ class User {
     public function setCity(string $city){
         $this->city = $city;
     }
-
 }
