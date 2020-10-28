@@ -7,7 +7,7 @@
         <div class ="col-6">
             <p>Date de parution : <?php echo $book->getPublication_date()?></p>
             <p>Catégorie : <?php echo $book->getCategory()?></p>
-            <p>Statut : <?php echo $book->getUserId() === NULL ? "disponible" : "emprunté par l'utilisateur n° " . $book->getUserId()?></p>
+            <p>Statut : <?php echo $book->getUserId() === NULL ? "disponible" : "emprunté par l'utilisateur n° " . $book->getUserId()?> <a href="user.php?id=<?php echo  $book->getUserId()?>" class="btn btn-success">Voir plus d'infos </a></p>
         </div>
     </div>
     <div class="row">

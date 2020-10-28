@@ -37,7 +37,7 @@ class User {
         return $this->postal_code;
     }
     public function getCity():string{
-        return $this->ciy;
+        return $this->city;
     }
     public function getBook():array{
         return $this->book;

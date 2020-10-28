@@ -1,7 +1,10 @@
 <?php
 
+require_once "model/model.php";
+
 class userManager extends Model{
 
+  //Récupère tous les utilsiateurs
   public function getUsers() {
     $querry = $this->db->prepare("
       SELECT * FROM User
@@ -20,12 +23,21 @@ class userManager extends Model{
   $querry->execute([
     "id" => $id
   ]);
-  $querry->setFetchMode(PDO::FETCH_CLASS, 'user');
+  $querry->setFetchMode(PDO::FETCH_CLASS, 'User');
   return $querry->fetch();
   }
+  //Récupère les livres qu'un utilisateur a emprunté
+  public function getUserBook(User $user){
+    $querry = $this->db->prepare("
+      SELECT b.tittle, b.id, b.author
+      FROM `book` as b INNER JOIN user AS u ON u.id = b.user_id 
+      WHERE user_id = :uid
+    ");
 
-  // Récupère un utilisateur par son code personnel
-  public function getUser() {
-
+    $querry->execute([
+      "uid" => $user->getId()
+    ]);
+    $querry->setFetchMode(PDO::FETCH_CLASS, 'Book');
+    return $querry->fetchAll();
   }
 }
