@@ -2,6 +2,8 @@
 // Classe représetant les livres stockés en base de données
 class Book {
 
+    const BOOKTYPE =["roman", "poésie", "recueil de nouvelle", "bande déssinée"];
+
     protected int $id;
     protected string $tittle;
     protected string $author;
@@ -52,7 +54,11 @@ class Book {
         $this->publication_date = $publication;
     }
     public function setCategory(string $category){
-        $this->category = $category;
+        if(in_array($category, self::BOOKTYPE)){
+            $this->category = $category;
+        }else{
+            echo "erreur la catégorie de livre ne correspond pas";
+        }
     }
     public function setStatus(int $status){
         $this->status = $status;

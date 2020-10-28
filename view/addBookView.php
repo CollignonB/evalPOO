@@ -12,7 +12,7 @@
     <label for="category">Categorie</label>
     <select class="form-control" id="category" name="category">
       <option value="roman">roman</option>
-      <option value="poèsie">poésie</option>
+      <option value="poésie">poésie</option>
       <option value="recueil de nouvelle">recueil de nouvelle</option>
       <option value="bande déssinée">bande dessinée</option>
     </select>

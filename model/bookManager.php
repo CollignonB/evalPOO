@@ -34,11 +34,11 @@ class bookManager extends Model {
       ");
 
       $querry->execute([
-        "tittle" => $book->getTittle(),
-        "author" => $book->getAuthor(),
-        "category" => $book->getCategory(),
-        "resume" => $book->getResume(),
-        "publication_date" => $book->getPublication_date()
+        "tittle" => htmlspecialchars($book->getTittle()),
+        "author" => htmlspecialchars($book->getAuthor()),
+        "category" => htmlspecialchars($book->getCategory()),
+        "resume" => htmlspecialchars($book->getResume()),
+        "publication_date" => htmlspecialchars($book->getPublication_date())
       ]);
   }
 
@@ -65,5 +65,15 @@ class bookManager extends Model {
       "bookId" => $book->getId()
     ]);
   }
+  public function deleteBook(Book $book){
+    $querry = $this->db->prepare(("
+      DELETE FROM book
+      Where id = :id
+    "));
 
+    $querry->execute([
+      "id" => $book->getId()
+    ]);
+
+  }
 }
