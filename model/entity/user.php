@@ -49,7 +49,7 @@ class User {
     public function setLastname(string $lastname){
         $this->lastname = $lastname;
     }
-    public function setFirdtname(string $firstname){
+    public function setFirstname(string $firstname){
         $this->firstname = $firstname;
     }
     public function setSex(string $sex){
@@ -75,7 +75,7 @@ class User {
 
     private function hydrate(array $datas){
         foreach($datas as $key => $value){
-            $method = "set" ; ucfirst($key);
+            $method = "set" . ucfirst($key);
             if (method_exists($this, $method)){
                 $this->$method(htmlspecialchars($value));
             }

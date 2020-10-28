@@ -28,4 +28,5 @@
         <a class="nav-link active text-success" href="index.php">Accueil</a>
         <a class="nav-link text-success" href="addBook.php">Ajouter un livre</a>
         <a class="nav-link text-success" href="users.php">Utilisateurs</a>
+        <a class="nav-link text-success" href="addUser.php">Ajouter un utilisateur</a>
     </nav>
