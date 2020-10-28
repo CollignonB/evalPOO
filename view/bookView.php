@@ -7,7 +7,7 @@
         <div class ="col-6">
             <p>Date de parution : <?php echo $book->getPublication_date()?></p>
             <p>Catégorie : <?php echo $book->getCategory()?></p>
-            <p>Statut : <?php echo $book->getStatus() === 0 ? "disponible" : "emprumté"?></p>
+            <p>Statut : <?php echo $book->getUserId() === NULL ? "disponible" : "emprunté par l'utilisateur n° " . $book->getUserId()?></p>
         </div>
     </div>
     <div class="row">
@@ -15,11 +15,18 @@
         <div><?php echo $book->getResume()?></div>
     </div>
     <div class="row">
-    <a href="changeStatus.php?id=<?php echo $book->getId()?>" type="button" class="btn btn-success">Emprumter/Rendre</a>
-    <?php if($book->getStatus() === 0):?>
-        <select name = "users">
-             <!-- foreach qui affiche les utilisateurs de la BDD -->
-        </select>
+    <?php if($book->getUserId() === NULL):?>
+        <form action="changeStatus.php" method="POST" name="userSelect">
+            <select name = "user">
+                <?php foreach($users as $key => $user):?>
+                    <option value="<?php echo $user->getId();?>"> <?php echo $user->getId();?> <?php echo $user->getFirstname();?> <?php echo $user->getLastname(); ?> </option>
+                <?php endforeach?>     
+            </select>
+            <input type="hidden" name="bookId" value="<?php echo $book->getId();?>">
+            <input type="submit" value="Selectionner">
+        </form>
+    <?php else:?>
+        <a href="changeStatus.php?id=<?php echo $book->getId()?>" type="button" class="btn btn-success">Rendre</a>
     <?php endif?>
     </div>
 </div>

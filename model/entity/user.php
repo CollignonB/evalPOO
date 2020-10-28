@@ -13,6 +13,7 @@ class User {
     protected string $address;
     protected string $postal_code;
     protected string $city;
+    protected array $book;
 
     public function getId():int {
         return $this->id;
@@ -37,6 +38,9 @@ class User {
     }
     public function getCity():string{
         return $this->ciy;
+    }
+    public function getBook():array{
+        return $this->book;
     }
 
     public function setId(int $id){
@@ -65,6 +69,10 @@ class User {
     public function setCity(string $city){
         $this->city = $city;
     }
+    public function setBook(Book $book){
+        array_push($this->book, $book);
+    }
+
     private function hydrate(array $datas){
         foreach($datas as $key => $value){
             $method = "set" ; ucfirst($key);
@@ -74,7 +82,9 @@ class User {
         }
     }
 
-    public function __construct(array $data){
-        $this->hydrate($data);
+    public function __construct(array $data = NULL){
+        if($data){
+            $this->hydrate($data);
+        }
     }
 }

@@ -8,9 +8,7 @@ class Book {
     protected ?string $resume;
     protected ?string $publication_date;
     protected string $category;
-    protected int $status;
-
-    protected USER $user;
+    protected ?int $user_id;
 
     public function getId():int{
         return $this->id;
@@ -30,13 +28,13 @@ class Book {
     public function getCategory():string{
         return $this->category;
     }
-    // return 'disponible' or 'emprumté' based on 0 or 1 in db 
     public function getStatus():int{
         return $this->status;
     }
-    public function getUser():User{
-        return $this->user;
+    public function getUserId(){
+        return $this->user_id;
     }
+
 
     public function setId(int $id){
         $this->id = $id;
@@ -59,8 +57,8 @@ class Book {
     public function setStatus(int $status){
         $this->status = $status;
     }
-    public function setUser(User $user){
-        $this->user = $user;
+    public function setUserId($user){
+        $this->user_id = $user;
     }
 
     private function hydrate(array $datas = null){

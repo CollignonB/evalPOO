@@ -4,13 +4,12 @@ USE library;
 
 CREATE TABLE IF NOT EXISTS book (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    borrowed_by INT,
+    user_id INT,
     tittle VARCHAR(40) NOT NULL,
     author VARCHAR(40) NOT NULL,
     resume TEXT,
     publication_date DATETIME,
-    category VARCHAR(15) NOT NULL,
-    status BOOLEAN
+    category VARCHAR(15) NOT NULL
 ) 
 ENGINE = INNODB;
 
@@ -27,7 +26,7 @@ CREATE TABLE IF NOT EXISTS user (
 ENGINE = INNODB;
 
 ALTER TABLE `book`
-  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`borrowed_by`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 INSERT INTO book (tittle, author, category)
 VALUES  ('Silence of the lamb', 'Thomas Harris', 'roman'),

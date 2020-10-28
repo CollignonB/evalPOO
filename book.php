@@ -9,7 +9,10 @@ include "template/header.php";
 $bookManager = new bookManager();
 $book = $bookManager->getBook($_GET["id"]);
 
-echo "ajout un champ pour choisir le gars qui emprunt le livre";
+$userManager = new userManager();
+$users = $userManager->getUsers();
+
+$borrowingUser = $userManager->getUserById($book->getUserId());
 
 
 include "view/bookView.php";
