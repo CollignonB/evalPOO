@@ -1,2 +1,12 @@
 <?php
-// Controleur qui gère l'affichage de tous les utilisateurs
+include "template/nav.php";
+include "template/header.php";
+include "model/userManager.php";
+include "model/entity/user.php";
+
+$userManager = new userManager();
+
+$users = $userManager->getUsers();
+
+include "view/usersView.php";
+include "template/footer.php";
