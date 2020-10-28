@@ -7,7 +7,6 @@ include "model/entity/user.php";
 $userManager = new userManager();
 
 $users = $userManager->getUsers();
-var_dump($users);
 
 include "view/usersView.php";
 include "template/footer.php";
