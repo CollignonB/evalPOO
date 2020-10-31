@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS library;
+DROP DATABASE IF EXISTS library_eval;
 CREATE DATABASE library;
 USE library;
 
