@@ -5,7 +5,7 @@
 abstract class Connection
 {
     const HOST = "localhost";
-    const DBNAME = "library";
+    const DBNAME = "library_eval";
     const USER = "root";
 
     public static function getPDOConnection() {
